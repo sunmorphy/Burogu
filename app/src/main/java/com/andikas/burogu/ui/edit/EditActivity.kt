@@ -51,47 +51,26 @@ class EditActivity : AppCompatActivity(), EditView {
             binding.edtContentAuthor
         )
 
-        binding.edtContentAuthor.setText(sharedPreference.userName)
         updateArticle(extraArticle)
-        binding.btnContentImage.setOnClickListener {
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_OPEN_DOCUMENT
-            getContent.launch(intent)
-        }
-        binding.btnSubmit.setOnClickListener {
-            submitArticle(false)
-        }
-        binding.btnBack.setOnClickListener {
-            onBackPressed()
-        }
+        binding.edtContentAuthor.setText(sharedPreference.userName)
+        binding.btnContentImage.setOnClickListener { presenter.getImage() }
+        binding.btnSubmit.setOnClickListener { submitArticle(false) }
+        binding.btnBack.setOnClickListener { onBackPressed() }
     }
 
-    private fun updateArticle(mArticle: Article?) {
-        if (mArticle != null) {
-            imagePath = mArticle.imagePath.toString()
+    override fun getContentImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_OPEN_DOCUMENT
 
-            if (mArticle.isDummy) {
-                binding.edtContentImage.setText(mArticle.imagePath)
-            } else {
-                if (mArticle.imagePath != null) {
-                    binding.edtContentImage.setText(Uri.parse(mArticle.imagePath).lastPathSegment)
-                } else {
-                    binding.edtContentImage.text = mArticle.imagePath
-                }
-            }
-
-            binding.edtContentTitle.setText(mArticle.title)
-            binding.edtContent.setText(mArticle.content)
-            binding.edtContentAuthor.setText(mArticle.author)
-
-            binding.btnSubmit.setOnClickListener {
-                submitArticle(true)
-            }
-        }
+        getContent.launch(intent)
     }
 
-    private fun submitArticle(isUpdate: Boolean) {
+    override fun submitArticle(isUpdate: Boolean) {
+        val notEmpty: Boolean = binding.edtContentTitle.text.toString()
+            .isNotEmpty() && binding.edtContent.text.toString()
+            .isNotEmpty() && binding.edtContentAuthor.text.toString().isNotEmpty()
+
         val title = binding.edtContentTitle.text.toString()
         val content = binding.edtContent.text.toString()
         val image = imagePath
@@ -119,7 +98,7 @@ class EditActivity : AppCompatActivity(), EditView {
                 author = author
             )
 
-            if (notEmpty()) {
+            if (notEmpty) {
                 presenter.insertArticle(article)
             } else {
                 articleInputArray.forEach { input ->
@@ -131,9 +110,29 @@ class EditActivity : AppCompatActivity(), EditView {
         }
     }
 
-    private fun notEmpty(): Boolean = binding.edtContentTitle.text.toString()
-        .isNotEmpty() && binding.edtContent.text.toString()
-        .isNotEmpty() && binding.edtContentAuthor.text.toString().isNotEmpty()
+    override fun updateArticle(article: Article?) {
+        if (article != null) {
+            imagePath = article.imagePath.toString()
+
+            if (article.isDummy) {
+                binding.edtContentImage.setText(article.imagePath)
+            } else {
+                if (article.imagePath != null) {
+                    binding.edtContentImage.setText(Uri.parse(article.imagePath).lastPathSegment)
+                } else {
+                    binding.edtContentImage.text = article.imagePath
+                }
+            }
+
+            binding.edtContentTitle.setText(article.title)
+            binding.edtContent.setText(article.content)
+            binding.edtContentAuthor.setText(article.author)
+
+            binding.btnSubmit.setOnClickListener {
+                submitArticle(true)
+            }
+        }
+    }
 
     override fun showMessage(msg: String) {
         makeToast(msg)

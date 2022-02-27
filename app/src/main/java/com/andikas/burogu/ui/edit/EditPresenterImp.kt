@@ -13,6 +13,10 @@ class EditPresenterImp(
     private val view: EditView,
     override val coroutineContext: CoroutineContext
 ) : EditPresenter, CoroutineScope {
+    override fun getImage() {
+        view.getContentImage()
+    }
+
     override fun insertArticle(article: Article) {
         launch(Dispatchers.Default) {
             val result = database.articleDao().insertArticle(article)

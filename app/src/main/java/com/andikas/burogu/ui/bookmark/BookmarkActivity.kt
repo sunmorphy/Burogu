@@ -30,8 +30,8 @@ class BookmarkActivity : AppCompatActivity(), BookmarkView {
         binding.btnBack.setOnClickListener { onBackPressed() }
     }
 
-    private fun configRecycler(mListArticles: List<Article>) {
-        val articleAdapter = ArticleAdapter(mListArticles, {
+    override fun showAllBookmarkedArticles(articles: List<Article>) {
+        val articleAdapter = ArticleAdapter(articles, {
             navigateTo(DetailActivity::class.java, "extraArticle", it)
         }, {
             presenter.setArticleBookmark(it, !it.isBookmarked)
@@ -42,10 +42,6 @@ class BookmarkActivity : AppCompatActivity(), BookmarkView {
             setHasFixedSize(true)
             adapter = articleAdapter
         }
-    }
-
-    override fun showAllBookmarkedArticles(articles: List<Article>) {
-        configRecycler(articles)
     }
 
     override fun refreshBookmarkedArticles() {

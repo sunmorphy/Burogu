@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.andikas.burogu.R
 import com.andikas.burogu.adapter.ArticleAdapter
 import com.andikas.burogu.data.IdentifySharedPref
@@ -48,35 +47,28 @@ class HomeActivity : AppCompatActivity(), HomeView {
         binding.btnAdd.setOnClickListener { navigateTo(EditActivity::class.java) }
     }
 
-    private fun setLayoutRecycler(state: Boolean, articles: List<Article>) {
-        if (state) {
-            binding.btnLayoutManager.setImageResource(R.drawable.ic_list)
-            configRecycler(GridLayoutManager(this, 2), articles)
-        } else {
-            binding.btnLayoutManager.setImageResource(R.drawable.ic_grid)
-            configRecycler(LinearLayoutManager(this), articles)
-        }
-    }
-
-    private fun configRecycler(
-        mLayoutManager: RecyclerView.LayoutManager,
-        mListArticles: List<Article>
-    ) {
-        val articleAdapter = ArticleAdapter(mListArticles, {
+    override fun showAllArticles(articles: List<Article>) {
+        val articleAdapter = ArticleAdapter(articles, {
             navigateTo(DetailActivity::class.java, "extraArticle", it)
         }, {
             presenter.setArticleBookmark(it, !it.isBookmarked)
         })
 
-        binding.rvArticle.apply {
-            layoutManager = mLayoutManager
-            setHasFixedSize(true)
-            adapter = articleAdapter
+        if (isGrid) {
+            binding.btnLayoutManager.setImageResource(R.drawable.ic_list)
+            binding.rvArticle.apply {
+                layoutManager = GridLayoutManager(this@HomeActivity, 2)
+                setHasFixedSize(true)
+                adapter = articleAdapter
+            }
+        } else {
+            binding.btnLayoutManager.setImageResource(R.drawable.ic_grid)
+            binding.rvArticle.apply {
+                layoutManager = LinearLayoutManager(this@HomeActivity)
+                setHasFixedSize(true)
+                adapter = articleAdapter
+            }
         }
-    }
-
-    override fun showAllArticles(articles: List<Article>) {
-        setLayoutRecycler(isGrid, articles)
     }
 
     override fun refreshArticles() {

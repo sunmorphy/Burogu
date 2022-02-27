@@ -37,7 +37,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
         presenter = DetailPresenterImp(database!!, this, Dispatchers.Main)
         val extraArticle = intent.getParcelableExtra<Article>("extraArticle")!!
 
-        loadDetails(extraArticle)
+        presenter.loadArticleDetails(extraArticle)
         binding.btnBack.setOnClickListener { onBackPressed() }
         binding.btnBookmark.setOnClickListener {
             presenter.setArticleBookmark(
@@ -52,38 +52,10 @@ class DetailActivity : AppCompatActivity(), DetailView {
                 extraArticle
             )
         }
-        binding.btnDelete.setOnClickListener { showDeleteAlert(extraArticle) }
+        binding.btnDelete.setOnClickListener { presenter.showAlert(extraArticle) }
     }
 
-    private fun loadDetails(article: Article) {
-        if (article.isBookmarked) {
-            binding.btnBookmark.setImageResource(R.drawable.ic_bookmark)
-        } else {
-            binding.btnBookmark.setImageResource(R.drawable.ic_unbookmark)
-        }
-
-        if (article.isDummy) {
-            Glide.with(this)
-                .load(article.imagePath)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.ic_no_image)
-                .centerCrop()
-                .into(binding.imgArticle)
-        } else {
-            Glide.with(this)
-                .load(article.imagePath)
-                .error(R.drawable.ic_no_image)
-                .centerCrop()
-                .into(binding.imgArticle)
-        }
-
-        binding.txtTitle.text = article.title
-        binding.txtCreatedDate.text = article.createdDate
-        binding.txtAuthor.text = article.author
-        binding.txtContent.text = article.content
-    }
-
-    private fun showDeleteAlert(article: Article) {
+    override fun showDeleteAlert(article: Article) {
         val textDialogTitle = TextView(this)
         textDialogTitle.text = "Hapus"
         textDialogTitle.textSize = 18f
@@ -111,7 +83,31 @@ class DetailActivity : AppCompatActivity(), DetailView {
         builder.create().show()
     }
 
-    override fun refreshArticleDetails(article: Article) {
-        loadDetails(article)
+    override fun loadDetails(article: Article) {
+        if (article.isBookmarked) {
+            binding.btnBookmark.setImageResource(R.drawable.ic_bookmark)
+        } else {
+            binding.btnBookmark.setImageResource(R.drawable.ic_unbookmark)
+        }
+
+        if (article.isDummy) {
+            Glide.with(this)
+                .load(article.imagePath)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_no_image)
+                .centerCrop()
+                .into(binding.imgArticle)
+        } else {
+            Glide.with(this)
+                .load(article.imagePath)
+                .error(R.drawable.ic_no_image)
+                .centerCrop()
+                .into(binding.imgArticle)
+        }
+
+        binding.txtTitle.text = article.title
+        binding.txtCreatedDate.text = article.createdDate
+        binding.txtAuthor.text = article.author
+        binding.txtContent.text = article.content
     }
 }

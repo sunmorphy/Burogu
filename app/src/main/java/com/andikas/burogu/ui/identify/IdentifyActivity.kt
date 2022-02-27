@@ -8,8 +8,9 @@ import com.andikas.burogu.ui.home.HomeActivity
 import com.andikas.burogu.utils.Extensions.hideActionBar
 import com.andikas.burogu.utils.Extensions.navigateTo
 
-class IdentifyActivity : AppCompatActivity() {
+class IdentifyActivity : AppCompatActivity(), IdentifyView {
     private lateinit var binding: ActivityIdentifyBinding
+    private lateinit var presenter: IdentifyPresenterImp
     private lateinit var sharedPreference: IdentifySharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,15 +20,19 @@ class IdentifyActivity : AppCompatActivity() {
         setContentView(binding.root)
         hideActionBar()
 
+        presenter = IdentifyPresenterImp(this)
         sharedPreference = IdentifySharedPref(this)
 
-        checkIfAlreadyIdentified()
+        presenter.loginCheck()
     }
 
-    private fun checkIfAlreadyIdentified() {
+    override fun checkIfAlreadyIdentified() {
         val isLogin = sharedPreference.userIdentified
 
-        if (isLogin) navigateTo(HomeActivity::class.java)
+        if (isLogin) {
+            navigateTo(HomeActivity::class.java)
+            finish()
+        }
 
         binding.btnSubmit.setOnClickListener {
             val name = binding.edtName.text.toString()
@@ -36,14 +41,13 @@ class IdentifyActivity : AppCompatActivity() {
                 name.isEmpty() -> {
                     binding.edtName.error = "Nama tidak boleh kosong"
                 }
-                else -> saveUserName(name)
+                else -> {
+                    sharedPreference.userName = name
+                    sharedPreference.userIdentified = true
+                    navigateTo(HomeActivity::class.java)
+                    finish()
+                }
             }
         }
-    }
-
-    private fun saveUserName(name: String) {
-        sharedPreference.userName = name
-        sharedPreference.userIdentified = true
-        navigateTo(HomeActivity::class.java)
     }
 }

@@ -14,7 +14,7 @@ class DetailPresenterImp(
     override val coroutineContext: CoroutineContext
 ) : DetailPresenter, CoroutineScope {
     override fun loadArticleDetails(article: Article) {
-        view.refreshArticleDetails(article)
+        view.loadDetails(article)
     }
 
     override fun setArticleBookmark(article: Article, newState: Boolean) {
@@ -22,8 +22,12 @@ class DetailPresenterImp(
             article.isBookmarked = newState
             database.articleDao().updateArticle(article)
             withContext(Dispatchers.Main) {
-                view.refreshArticleDetails(article)
+                view.loadDetails(article)
             }
         }
+    }
+
+    override fun showAlert(article: Article) {
+        view.showDeleteAlert(article)
     }
 }

@@ -8,4 +8,6 @@ interface DetailPresenter {
 
     fun setArticleBookmark(article: Article, newState: Boolean)
 
+    fun showAlert(article: Article)
+
 }

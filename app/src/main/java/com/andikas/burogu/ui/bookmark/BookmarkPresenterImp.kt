@@ -16,7 +16,7 @@ class BookmarkPresenterImp(
     override fun loadAllBookmarkedArticles() {
         launch(Dispatchers.Default) {
             val result = database.articleDao().getBookmarkedArticles()
-            kotlinx.coroutines.withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 view.showAllBookmarkedArticles(result)
             }
         }

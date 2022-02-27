@@ -24,10 +24,6 @@ abstract class ArticleDatabase : RoomDatabase() {
                     "Article.db"
                 ).build()
             }
-
-        fun destroyInstance() {
-            INSTANCE = null
-        }
     }
 
 }
