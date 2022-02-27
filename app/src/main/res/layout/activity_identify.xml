@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="30dp">
+        android:paddingBottom="@dimen/_30dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgHello"
@@ -23,8 +23,8 @@
             android:id="@+id/edtName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="@dimen/_50dp"
+            android:layout_marginEnd="@dimen/_20dp"
             android:background="@drawable/bg_column"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -32,22 +32,22 @@
             android:hint="Nama"
             android:inputType="text"
             android:maxLines="1"
-            android:padding="16dp"
+            android:padding="@dimen/_16dp"
             android:textColor="@color/primaryDark"
             android:textColorHint="@color/neutralLight"
-            android:textSize="16sp"
+            android:textSize="@dimen/_16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imgHello"
             app:layout_constraintEnd_toStartOf="@+id/cvSubmit"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvSubmit"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="50dp"
+            android:layout_width="@dimen/_42dp"
+            android:layout_height="@dimen/_42dp"
+            android:layout_marginEnd="@dimen/_50dp"
             android:background="@color/primaryDark"
             android:backgroundTint="@color/primaryDark"
-            app:cardCornerRadius="21dp"
+            app:cardCornerRadius="@dimen/_21dp"
             app:layout_constraintBottom_toBottomOf="@+id/edtName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edtName"
