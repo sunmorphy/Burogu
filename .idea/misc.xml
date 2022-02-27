@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/bg_column.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/bg_dialog.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/bg_stack.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/dwa.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/ic_add.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/ic_back.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/ic_no_image.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/drawable/ic_unbookmark.xml" value="0.154" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_add.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_bookmark.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_detail.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_edit.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_home.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_identify.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/activity_profile.xml" value="0.209375" />
+        <entry key="..\:/Users/andpu/Documents/Playground/AndroidStudioProject/Burogu/app/src/main/res/layout/item_article.xml" value="0.209375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

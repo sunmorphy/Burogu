@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.edit.EditActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/primaryDark"
+            android:backgroundTint="@color/primaryDark"
+            app:cardCornerRadius="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back"
+                android:tint="@color/primaryLight" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Edit"
+            android:textColor="@color/primaryDark"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cvBack"
+            app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
+            app:layout_constraintStart_toEndOf="@+id/cvBack"
+            app:layout_constraintTop_toTopOf="@+id/cvBack" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_check"
+            app:layout_constraintBottom_toBottomOf="@+id/cvBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cvBack" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtContentTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_column"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Judul Artikel"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:textColor="@color/primaryDark"
+            android:textColorHint="@color/neutralLight"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
+            app:layout_constraintStart_toStartOf="@+id/cvBack"
+            app:layout_constraintTop_toBottomOf="@+id/txtEdit" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_column"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="top|start"
+            android:hint="Deskripsi Artikel"
+            android:inputType="textMultiLine"
+            android:padding="16dp"
+            android:textColor="@color/primaryDark"
+            android:textColorHint="@color/neutralLight"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/edtContentTitle"
+            app:layout_constraintStart_toStartOf="@+id/edtContentTitle"
+            app:layout_constraintTop_toBottomOf="@+id/edtContentTitle" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtContentImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_column"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="top|start"
+            android:hint="Gambar Artikel (Opsional)"
+            android:inputType="none"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:textColor="@color/primaryDark"
+            android:textColorHint="@color/neutralLight"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/edtContent"
+            app:layout_constraintStart_toStartOf="@+id/edtContent"
+            app:layout_constraintTop_toBottomOf="@+id/edtContent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnContentImage"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add"
+            android:tint="@color/neutralDark"
+            app:layout_constraintBottom_toBottomOf="@+id/edtContentImage"
+            app:layout_constraintEnd_toEndOf="@+id/edtContentImage"
+            app:layout_constraintTop_toTopOf="@+id/edtContentImage" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtContentAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_column"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="top|start"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:text="User"
+            android:textColor="@color/primaryDark"
+            android:textColorHint="@color/neutralLight"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/edtContentImage"
+            app:layout_constraintStart_toStartOf="@+id/edtContentImage"
+            app:layout_constraintTop_toBottomOf="@+id/edtContentImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

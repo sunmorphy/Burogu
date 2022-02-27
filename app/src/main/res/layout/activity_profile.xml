@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/primaryDark"
+        android:backgroundTint="@color/primaryDark"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:padding="6dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back"
+            android:tint="@color/primaryLight" />
+
+    </androidx.cardview.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civProfile"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="16dp"
+        android:src="@drawable/img_panda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvBack" />
+
+    <TextView
+        android:id="@+id/txtAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Author's Name"
+        android:textAlignment="center"
+        android:textColor="@color/primaryDark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/civProfile"
+        app:layout_constraintStart_toStartOf="@+id/civProfile"
+        app:layout_constraintTop_toBottomOf="@+id/civProfile" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBookmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#41A8A8A8"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAuthor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBookmark"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_bookmark"
+                android:tint="@color/primaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtBookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Bookmarks"
+                android:textColor="@color/primaryDark"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBookmark"
+                app:layout_constraintStart_toEndOf="@+id/imgBookmark"
+                app:layout_constraintTop_toTopOf="@+id/imgBookmark" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnNavigateBookmark"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_right_arrow"
+                android:tint="@color/neutralLight"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBookmark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtBookmark" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSignOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#41A8A8A8"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="@id/cvBookmark"
+        app:layout_constraintStart_toStartOf="@id/cvBookmark"
+        app:layout_constraintTop_toBottomOf="@+id/cvBookmark">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSignOut"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_signout"
+                android:tint="@color/primaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtSignOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Keluar"
+                android:textColor="@color/primaryDark"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgSignOut"
+                app:layout_constraintStart_toEndOf="@+id/imgSignOut"
+                app:layout_constraintTop_toTopOf="@+id/imgSignOut" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnNavigateSignOut"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_right_arrow"
+                android:tint="@color/neutralLight"
+                app:layout_constraintBottom_toBottomOf="@+id/txtSignOut"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtSignOut" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

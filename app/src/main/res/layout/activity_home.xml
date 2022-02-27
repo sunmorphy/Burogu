@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:id="@+id/txtGreetings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Halo"
+                android:textColor="@color/primaryDark"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="User"
+                android:textColor="@color/primaryDark"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtGreetings"
+                app:layout_constraintStart_toEndOf="@+id/txtGreetings"
+                app:layout_constraintTop_toTopOf="@+id/txtGreetings" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvDivider"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                app:cardCornerRadius="1dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="@id/txtUsername"
+                app:layout_constraintStart_toStartOf="@+id/txtGreetings"
+                app:layout_constraintTop_toBottomOf="@id/txtGreetings">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/primaryDark" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnProfile"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="20dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/cvDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtGreetings" />
+
+            <TextView
+                android:id="@+id/txtBrowse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Jelajahi Artikelmu!"
+                android:textColor="@color/primaryDark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/txtGreetings"
+                app:layout_constraintTop_toBottomOf="@+id/cvDivider" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/primaryDark"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:focusedByDefault="false"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Cari Artikel"
+                android:paddingVertical="18dp"
+                android:textColor="@color/primaryDark"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnLayoutManager"
+                app:layout_constraintEnd_toStartOf="@+id/btnLayoutManager"
+                app:layout_constraintStart_toStartOf="@+id/txtBrowse"
+                app:layout_constraintTop_toTopOf="@+id/btnLayoutManager" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnLayoutManager"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_grid"
+                app:layout_constraintEnd_toEndOf="@+id/btnProfile"
+                app:layout_constraintTop_toBottomOf="@+id/txtBrowse" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvArticle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="@+id/btnLayoutManager"
+                app:layout_constraintStart_toStartOf="@+id/edtSearch"
+                app:layout_constraintTop_toBottomOf="@+id/edtSearch"
+                tools:listitem="@layout/item_article" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/primaryLight"
+        android:backgroundTint="@color/primaryLight"
+        android:contentDescription="Add"
+        android:src="@drawable/ic_add"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="18dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
