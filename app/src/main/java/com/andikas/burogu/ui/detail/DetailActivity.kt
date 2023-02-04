@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
@@ -30,6 +29,7 @@ import coil.compose.AsyncImage
 import com.andikas.burogu.R
 import com.andikas.burogu.data.local.ArticleDatabase
 import com.andikas.burogu.data.model.Article
+import com.andikas.burogu.ui.components.MainButton
 import com.andikas.burogu.ui.edit.EditActivity
 import com.andikas.burogu.ui.home.HomeActivity
 import com.andikas.burogu.utils.Extensions.Poppins
@@ -145,18 +145,11 @@ fun ArticleDetailContent(
                 modifier = Modifier
                     .fillMaxWidth(),
             ) {
-                Button(
-                    shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.primaryDark)),
-                    onClick = { onBack() },
-                    modifier = Modifier,
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.ArrowBackIos,
-                        tint = Color.White,
-                        contentDescription = "Kembali",
-                    )
-                }
+                MainButton(
+                    icon = Icons.Rounded.ArrowBackIos,
+                    contentDescription = "Kembali",
+                    onClick = onBack
+                )
                 IconButton(
                     onClick = {
                         onBookmarkClick()

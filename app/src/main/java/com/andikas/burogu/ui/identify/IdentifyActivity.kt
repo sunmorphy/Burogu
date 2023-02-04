@@ -5,23 +5,23 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.andikas.burogu.R
 import com.andikas.burogu.data.IdentifySharedPref
+import com.andikas.burogu.ui.components.MainButton
+import com.andikas.burogu.ui.components.MainField
 import com.andikas.burogu.ui.home.HomeActivity
 import com.andikas.burogu.utils.Extensions.hideActionBar
 import com.andikas.burogu.utils.Extensions.navigateTo
@@ -68,7 +68,6 @@ class IdentifyActivity : AppCompatActivity(), IdentifyView {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Identify(
     query: String,
@@ -97,34 +96,19 @@ fun Identify(
                     horizontal = 20.dp
                 )
         ) {
-            TextField(
-                value = query,
-                onValueChange = onQueryChange,
-                shape = RoundedCornerShape(20.dp),
-                placeholder = {
-                    Text(text = "Nama")
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = colorResource(id = R.color.primaryLight),
-                    disabledIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                ),
-                modifier = Modifier
-                    .heightIn(52.dp)
+            MainField(
+                placeholder = "Nama",
+                query = query,
+                onQueryChange = onQueryChange
             )
-            Button(
-                colors = ButtonDefaults.buttonColors(colorResource(id = R.color.primaryDark)),
+            MainButton(
+                icon = Icons.Rounded.Check,
+                contentDescription = null,
                 onClick = { onButtonClick(query) },
                 modifier = Modifier
                     .heightIn(52.dp)
                     .padding(start = 12.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Check,
-                    contentDescription = null
-                )
-            }
+            )
         }
     }
 }
