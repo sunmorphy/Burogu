@@ -30,7 +30,6 @@ import coil.compose.AsyncImage
 import com.andikas.burogu.R
 import com.andikas.burogu.data.local.ArticleDatabase
 import com.andikas.burogu.data.model.Article
-import com.andikas.burogu.databinding.ActivityDetailBinding
 import com.andikas.burogu.ui.edit.EditActivity
 import com.andikas.burogu.ui.home.HomeActivity
 import com.andikas.burogu.utils.Extensions.Poppins
@@ -43,14 +42,11 @@ import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
 class DetailActivity : AppCompatActivity(), DetailView {
-    private lateinit var binding: ActivityDetailBinding
     private lateinit var presenter: DetailPresenterImp
     private var database: ArticleDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityDetailBinding.inflate(layoutInflater)
         hideActionBar()
 
         database = ArticleDatabase.getInstance(this)
