@@ -44,7 +44,7 @@ class IdentifyActivity : AppCompatActivity(), IdentifyView {
 
         setContent {
             MaterialTheme {
-                Identify(
+                IdentifyContent(
                     query = query,
                     onQueryChange = presenter::onQueryChange,
                     onButtonClick = {
@@ -69,7 +69,7 @@ class IdentifyActivity : AppCompatActivity(), IdentifyView {
 }
 
 @Composable
-fun Identify(
+fun IdentifyContent(
     query: String,
     onQueryChange: (String) -> Unit,
     onButtonClick: (String) -> Unit,
@@ -121,7 +121,7 @@ fun Identify(
 @Composable
 fun IdentifyPreview() {
     MaterialTheme {
-        Identify(
+        IdentifyContent(
             "",
             {},
             {}
