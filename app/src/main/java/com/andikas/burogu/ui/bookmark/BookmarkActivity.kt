@@ -103,7 +103,7 @@ fun BookmarkContent(
                 )
                 Text(
                     text = "Bookmark",
-                    fontSize = 32.sp,
+                    fontSize = 24.sp,
                     fontFamily = Poppins,
                     fontWeight = FontWeight.SemiBold,
                     color = colorResource(id = R.color.primaryDark),
