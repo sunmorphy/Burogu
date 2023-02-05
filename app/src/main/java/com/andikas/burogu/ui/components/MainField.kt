@@ -24,6 +24,7 @@ fun MainField(
     maxLines: Int = 1,
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
+    enabled: Boolean = true,
 ) {
     when {
         leadingIcon == null && trailingIcon == null -> {
@@ -35,6 +36,7 @@ fun MainField(
                 placeholder = {
                     Text(text = placeholder)
                 },
+                enabled = enabled,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.primaryLight),
                     disabledIndicatorColor = Color.Transparent,
@@ -54,6 +56,7 @@ fun MainField(
                 placeholder = {
                     Text(text = placeholder)
                 },
+                enabled = enabled,
                 leadingIcon = {
                     Icon(imageVector = leadingIcon, contentDescription = null)
                 },
@@ -76,6 +79,7 @@ fun MainField(
                 placeholder = {
                     Text(text = placeholder)
                 },
+                enabled = enabled,
                 trailingIcon = {
                     Icon(imageVector = trailingIcon, contentDescription = null)
                 },
@@ -98,6 +102,7 @@ fun MainField(
                 placeholder = {
                     Text(text = placeholder)
                 },
+                enabled = enabled,
                 leadingIcon = {
                     Icon(imageVector = leadingIcon as ImageVector, contentDescription = null)
                 },

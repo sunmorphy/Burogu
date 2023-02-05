@@ -99,7 +99,9 @@ fun IdentifyContent(
             MainField(
                 placeholder = "Nama",
                 value = value,
-                onValueChange = onValueChange
+                onValueChange = onValueChange,
+                modifier = Modifier
+                    .weight(3f)
             )
             MainButton(
                 icon = Icons.Rounded.Check,
@@ -108,6 +110,7 @@ fun IdentifyContent(
                 modifier = Modifier
                     .heightIn(52.dp)
                     .padding(start = 12.dp)
+                    .weight(1f)
             )
         }
     }

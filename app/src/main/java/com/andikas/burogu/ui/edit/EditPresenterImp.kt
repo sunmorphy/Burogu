@@ -1,5 +1,7 @@
 package com.andikas.burogu.ui.edit
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import com.andikas.burogu.data.local.ArticleDatabase
 import com.andikas.burogu.data.model.Article
 import kotlinx.coroutines.CoroutineScope
@@ -13,6 +15,14 @@ class EditPresenterImp(
     private val view: EditView,
     override val coroutineContext: CoroutineContext
 ) : EditPresenter, CoroutineScope {
+
+    private val _imagePath = mutableStateOf("")
+    val imagePath: State<String> get() = _imagePath
+
+    override fun setImagePath(path: String) {
+        _imagePath.value = path
+    }
+
     override fun getImage() {
         view.getContentImage()
     }

@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.andikas.burogu.R
 import com.andikas.burogu.data.local.ArticleDatabase
 import com.andikas.burogu.data.model.Article
@@ -193,7 +195,10 @@ fun ArticleDetailContent(
                 modifier = Modifier
             )
             AsyncImage(
-                model = imagePath,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(imagePath)
+                    .error(R.drawable.ic_no_image)
+                    .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

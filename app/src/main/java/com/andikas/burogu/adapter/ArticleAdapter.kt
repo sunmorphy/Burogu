@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,6 +30,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.recyclerview.widget.RecyclerView
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.andikas.burogu.R
 import com.andikas.burogu.data.model.Article
 import com.andikas.burogu.databinding.ItemArticleBinding
@@ -103,7 +105,10 @@ fun ArticleItem(
         val (articleImage, stackImage, titleText, authorText, bookmarkButton) = createRefs()
 
         AsyncImage(
-            model = imagePath,
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(imagePath)
+                .error(R.drawable.ic_no_image)
+                .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
