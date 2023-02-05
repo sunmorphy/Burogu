@@ -1,5 +1,7 @@
 package com.andikas.burogu.ui.home
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import com.andikas.burogu.data.local.ArticleDatabase
 import com.andikas.burogu.data.model.Article
 import com.andikas.burogu.utils.DataDummy
@@ -14,6 +16,22 @@ class HomePresenterImp(
     private val view: HomeView,
     override val coroutineContext: CoroutineContext
 ) : HomePresenter, CoroutineScope {
+
+    private var result = listOf<Article>()
+
+    private val _query = mutableStateOf("")
+    val query: State<String> get() = _query
+
+    override fun onQueryChange(newQuery: String) {
+        _query.value = newQuery
+        launch(Dispatchers.Default) {
+            result = database.articleDao().findArticles(_query.value)
+            withContext(Dispatchers.Main) {
+                view.showAllArticles(result)
+            }
+        }
+    }
+
     override fun insertDummyArticles() {
         launch(Dispatchers.Default) {
             val articles = database.articleDao().getAllArticles()
@@ -29,7 +47,7 @@ class HomePresenterImp(
 
     override fun loadAllArticles() {
         launch(Dispatchers.Default) {
-            val result = database.articleDao().getAllArticles()
+            if (_query.value.isEmpty()) result = database.articleDao().getAllArticles()
             withContext(Dispatchers.Main) {
                 view.showAllArticles(result)
             }

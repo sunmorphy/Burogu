@@ -9,6 +9,9 @@ interface ArticleDao {
     @Query("SELECT * FROM articles ORDER BY id DESC")
     fun getAllArticles(): List<Article>
 
+    @Query("SELECT * FROM articles WHERE title LIKE '%' || :query || '%' ORDER BY id DESC")
+    fun findArticles(query: String): List<Article>
+
     @Query("SELECT * FROM articles WHERE bookmarked = 1 ORDER BY id DESC")
     fun getBookmarkedArticles(): List<Article>
 

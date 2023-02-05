@@ -4,6 +4,8 @@ import com.andikas.burogu.data.model.Article
 
 interface HomePresenter {
 
+    fun onQueryChange(newQuery: String)
+
     fun insertDummyArticles()
 
     fun loadAllArticles()
