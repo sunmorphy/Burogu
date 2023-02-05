@@ -161,8 +161,8 @@ fun HomeContent(
             ) {
                 MainField(
                     placeholder = "Cari artikel",
-                    query = query,
-                    onQueryChange = onQueryChange,
+                    value = query,
+                    onValueChange = onQueryChange,
                     modifier = Modifier
                         .weight(3f)
                 )

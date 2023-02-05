@@ -45,8 +45,8 @@ class IdentifyActivity : AppCompatActivity(), IdentifyView {
         setContent {
             MaterialTheme {
                 IdentifyContent(
-                    query = query,
-                    onQueryChange = presenter::onQueryChange,
+                    value = query,
+                    onValueChange = presenter::onQueryChange,
                     onButtonClick = {
                         sharedPreference.userName = it.ifEmpty { "Guest" }
                         sharedPreference.userIdentified = true
@@ -70,8 +70,8 @@ class IdentifyActivity : AppCompatActivity(), IdentifyView {
 
 @Composable
 fun IdentifyContent(
-    query: String,
-    onQueryChange: (String) -> Unit,
+    value: String,
+    onValueChange: (String) -> Unit,
     onButtonClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -98,13 +98,13 @@ fun IdentifyContent(
         ) {
             MainField(
                 placeholder = "Nama",
-                query = query,
-                onQueryChange = onQueryChange
+                value = value,
+                onValueChange = onValueChange
             )
             MainButton(
                 icon = Icons.Rounded.Check,
                 contentDescription = null,
-                onClick = { onButtonClick(query) },
+                onClick = { onButtonClick(value) },
                 modifier = Modifier
                     .heightIn(52.dp)
                     .padding(start = 12.dp)

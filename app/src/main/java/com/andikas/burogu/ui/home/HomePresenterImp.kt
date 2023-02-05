@@ -47,7 +47,8 @@ class HomePresenterImp(
 
     override fun loadAllArticles() {
         launch(Dispatchers.Default) {
-            if (_query.value.isEmpty()) result = database.articleDao().getAllArticles()
+            result = if (_query.value.isEmpty()) database.articleDao().getAllArticles()
+            else database.articleDao().findArticles(_query.value)
             withContext(Dispatchers.Main) {
                 view.showAllArticles(result)
             }

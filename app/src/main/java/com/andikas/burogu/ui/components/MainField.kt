@@ -17,13 +17,15 @@ import com.andikas.burogu.R
 @Composable
 fun MainField(
     placeholder: String,
-    query: String,
-    onQueryChange: (String) -> Unit,
+    value: String,
+    onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    maxLines: Int = 1,
 ) {
     TextField(
-        value = query,
-        onValueChange = onQueryChange,
+        value = value,
+        onValueChange = onValueChange,
+        maxLines = maxLines,
         shape = RoundedCornerShape(20.dp),
         placeholder = {
             Text(text = placeholder)
